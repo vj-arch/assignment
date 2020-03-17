@@ -1,0 +1,45 @@
+<div class="main">
+  <div class="user_input">
+    <mat-card>
+      <h2>INPUT</h2>
+      <table>
+        <tr>
+          <td><label for="xcoordinates">X Coordinates</label></td>
+          <td><input type="number" id="xcoordinates"[(ngModel)]="xValue"/></td>
+        </tr>
+        <tr>
+          <td><label for="ycoordinates"> Y Coordinates</label></td>
+          <td><input type="number"id="ycoordinates"[(ngModel)]="yValue"/></td>
+        </tr>
+        <tr>
+          <td><label for="width">Width</label></td>
+          <td><input type="number" id="width"[(ngModel)]="width"/></td>
+        </tr>
+        <tr>
+          <td><label for="height">Height</label></td>
+          <td><input type="number"id="height"[(ngModel)]="height"/></td>
+        </tr>
+        
+      </table>
+    </mat-card>
+  </div>
+  <div class="box">
+    <div class="outer-box">
+      <div class="inner-box"
+        cdkDrag 
+        cdkDragBoundary=".outer-box"
+        (cdkDragEnded)="onDragEnded($event)"
+        [style]="{'transform': 'translate('+xValue +'px,'+ yValue +'px)'}"
+        [style.width.px]="width"
+        [style.height.px]="height"
+        (click)="showCoords($event)">
+        <span >
+          <p class="dot"
+          [style]="{'transform': 'translate('+((width/2)-2) +'px,'+ ((height/2)-2) +'px)'}">
+          </p>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
